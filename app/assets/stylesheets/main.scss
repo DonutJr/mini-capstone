@@ -1,5 +1,5 @@
-$first-color: red;
-$second-color: orange;
+$first-color: lightgreen;
+$second-color: lightblue;
 
 h1 {
 
@@ -13,10 +13,11 @@ h2 {
 }
 
 body {
-  background-color: $second-color;
+  background-color: whitespace;
+
 }
 
 h3, h4 {
   background-color: white;
-  color: $second-color
+  color: $second-color;
 }

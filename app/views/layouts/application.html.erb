@@ -9,6 +9,18 @@
   </head>
 
   <body>
+  <h1><a href="/">Legos</a></h1>
+  <h2><a href="/products/new">New Lego</a></h2>
+
+  <div class="container">
+    <% flash.each do |name, message| %>
+      <div class="alert alert-<%= name %> alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><%= message %></strong>
+</div>
+    <% end %>
+
     <%= yield %>
+  </div>
   </body>
 </html>

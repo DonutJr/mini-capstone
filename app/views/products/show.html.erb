@@ -1,3 +1,16 @@
-<h1>test products lego page version 2</h1>
-
+<h2>Name: <%= @product.name %></h2>
+<h2>Price: <%= @product.price %></h2>
 <h2><img src=<%= @product.image %>></h2>
+<h2>Description: <%= @product.description %></h2>
+
+
+
+
+<%= form_tag "/products/#{@product.id}", method: :delete do %>
+  <input type="submit" value="Delete Lego">
+
+<% end %>
+
+<a href="/products/<%= @product.id %>" data-method="delete"> Delete Lego</a>
+
+<%= link_to "delete", "/products/#{ @product.id }", method: :delete, class: "btn btn-danger" %>
