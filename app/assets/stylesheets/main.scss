@@ -3,21 +3,30 @@ $second-color: lightblue;
 
 h1 {
 
-  color: green;
+  
 
 }
 
 
 h2 {
-  background-color: $first-color;
+  
 }
 
 body {
   background-color: whitespace;
-
+  font-family: "Book Antiqua",Palatino,"Palatino Linotype","Palatino LT STD",Georgia, serif;
+  background-image: url('vintage-concrete.png');
 }
 
 h3, h4 {
   background-color: white;
   color: $second-color;
+}
+
+.product-index-single {
+  height: 500px
+}
+
+.well {
+  width: 100%;
 }

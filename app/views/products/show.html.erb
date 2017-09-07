@@ -1,7 +1,10 @@
 <h2>Name: <%= @product.name %></h2>
 <h2>Price: <%= @product.price %></h2>
 <h2><img src=<%= @product.image %>></h2>
+<h5>Updated on: <%= @product.updated_at.strftime("%b %e, %Y") %></h5>
 <h2>Description: <%= @product.description %></h2>
+
+<h5></h5>
 
 
 
@@ -12,5 +15,10 @@
 <% end %>
 
 <a href="/products/<%= @product.id %>" data-method="delete"> Delete Lego</a>
+
+<h4><%= @product.sale_message %></h4>
+
+<h3>tax is <%= @product.tax %></h3>
+<h3>total is <%= @product.price + @product.tax %></h3>
 
 <%= link_to "delete", "/products/#{ @product.id }", method: :delete, class: "btn btn-danger" %>
