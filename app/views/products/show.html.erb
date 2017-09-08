@@ -1,24 +1,28 @@
 <h2>Name: <%= @product.name %></h2>
-<h2>Price: <%= @product.price %></h2>
+
+<% if @product.discounted? %>
+  <h4>Discount Item!</h4>
+<% else %>
+  <h4>Everyday Great Value!</h4>
+<% end %>
+
+
+<h2>Price: <%= number_to_currency(@product.price) %></h2>
 <h2><img src=<%= @product.image %>></h2>
 <h5>Updated on: <%= @product.updated_at.strftime("%b %e, %Y") %></h5>
 <h2>Description: <%= @product.description %></h2>
 
-<h5></h5>
 
 
 
 
-<%= form_tag "/products/#{@product.id}", method: :delete do %>
-  <input type="submit" value="Delete Lego">
 
-<% end %>
 
 <a href="/products/<%= @product.id %>" data-method="delete"> Delete Lego</a>
 
 <h4><%= @product.sale_message %></h4>
 
-<h3>tax is <%= @product.tax %></h3>
-<h3>total is <%= @product.price + @product.tax %></h3>
+<h3>tax is <%= number_to_currency(@product.tax) %></h3>
+<h3>total is <%= number_to_currency(@product.price + @product.tax) %></h3>
 
 <%= link_to "delete", "/products/#{ @product.id }", method: :delete, class: "btn btn-danger" %>
