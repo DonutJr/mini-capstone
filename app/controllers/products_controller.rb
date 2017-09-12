@@ -11,6 +11,34 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+
+    sort_attribute = params[:sort]
+    desc = params[:desc]
+    discount = params[:disc]
+    random = params[:random]
+    search = params[:search]
+
+    if sort_attribute
+      @products = @products.order(sort_attribute)
+    end
+
+    if desc
+      @products = @products.order(price: :desc)
+    end
+
+    if discount
+      @products = @products.where("price < ?", discount)
+    end
+
+    if random
+      @products = @products.order("RANDOM()").first(1)
+    end
+
+    if search
+      @products = @products.where("#{:name} iLIKE ?" , "%#{search}%")
+    end
+
+
   end
 
   def new
