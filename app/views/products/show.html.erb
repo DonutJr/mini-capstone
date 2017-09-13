@@ -26,3 +26,5 @@
 <h3>total is <%= number_to_currency(@product.price + @product.tax) %></h3>
 
 <%= link_to "delete", "/products/#{ @product.id }", method: :delete, class: "btn btn-danger" %>
+
+<h6>Supplier: <%= @product.supplier.name %></h6>

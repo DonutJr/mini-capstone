@@ -1,4 +1,13 @@
 class Product < ApplicationRecord
+  
+  # def supplier
+  #   Supplier.find_by(id: self.supplier_id)
+  # end
+
+  belongs_to :supplier
+
+  has_many :image
+
   def sale_message
 
     if discounted?
