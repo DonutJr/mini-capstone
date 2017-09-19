@@ -5,8 +5,8 @@ class Product < ApplicationRecord
   # end
 
   belongs_to :supplier
-
-  has_many :image
+  has_many :images
+  has_many :orders
 
   def sale_message
 

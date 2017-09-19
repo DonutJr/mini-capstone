@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
 
   get '/products/:id' => 'products#show'
+  # post '/products' => 'orders#create'
 
+ 
+  post '/orders' => 'orders#create'
+  get '/orders/:id' => 'orders#show'
 
 
   get '/products/:id/edit' => 'products#edit'
@@ -24,4 +28,6 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+
 end

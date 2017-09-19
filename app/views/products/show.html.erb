@@ -25,6 +25,22 @@
 <h3>tax is <%= number_to_currency(@product.tax) %></h3>
 <h3>total is <%= number_to_currency(@product.price + @product.tax) %></h3>
 
+
+<h2>Buy now</h2>
+
+<%= form_tag "/orders", method: :post do %>
+  <input type="hidden" value=" <%= @product.id %>"  name = "product_id" >
+  
+
+  <div>
+    Quantity: <input type="text" name="quantity">
+
+  </div>
+
+  <input type="submit" value="Buy Now">
+
+<% end %>
+
 <%= link_to "delete", "/products/#{ @product.id }", method: :delete, class: "btn btn-danger" %>
 
 <h6>Supplier: <%= @product.supplier.name %></h6>
