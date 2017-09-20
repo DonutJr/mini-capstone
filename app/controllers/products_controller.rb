@@ -17,6 +17,8 @@ class ProductsController < ApplicationController
     discount = params[:disc]
     random = params[:random]
     search = params[:search]
+    movie = params[:movie]
+    category_sort = params[:category_id]
 
     if sort_attribute
       @products = @products.order(sort_attribute)
@@ -24,6 +26,10 @@ class ProductsController < ApplicationController
 
     if desc
       @products = @products.order(price: :desc)
+    end
+
+    if category_sort
+      @products = Category.find_by(id: category_sort).products
     end
 
     if discount

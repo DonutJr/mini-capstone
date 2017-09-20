@@ -9,10 +9,6 @@ class OrdersController < ApplicationController
                   product_id: params[:product_id],
                   )
 
-    order.calculate_totals
-
-
-
     if order.save
       flash[:success] = "Order Successfully Purchased"
       # redirect_to '/orders/show'
