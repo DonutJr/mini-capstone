@@ -30,4 +30,8 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
 
+  get '/cart' => 'carted_products#index'
+  post '/cart' => 'carted_products#create'
+
+
 end

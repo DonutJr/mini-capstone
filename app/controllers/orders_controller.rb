@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
 
   def create
-    product = Product.find(params[:product_id])
+    CartedProduct.all.each do |carted_product|
+      if carted_product.status == "carted"
+        order = Or
 
     order = Order.new(
                   user_id: current_user.id,

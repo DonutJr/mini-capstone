@@ -8,7 +8,6 @@
 
 
 <h2>Price: <%= number_to_currency(@product.price) %></h2>
-<h2><img src=<%= @product.image %>></h2>
 <h5>Updated on: <%= @product.updated_at.strftime("%b %e, %Y") %></h5>
 <h2>Description: <%= @product.description %></h2>
 
@@ -30,7 +29,7 @@
 
 <h2>Buy now</h2>
 
-<%= form_tag "/orders", method: :post do %>
+<%= form_tag "/cart", method: :post do %>
   <input type="hidden" value=" <%= @product.id %>"  name = "product_id" >
   
 
@@ -39,7 +38,7 @@
 
   </div>
 
-  <input type="submit" value="Buy Now">
+  <input type="submit" value="Add to Cart">
 
 <% end %>
 
