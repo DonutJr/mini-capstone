@@ -60,7 +60,10 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              
+            <% if current_user && current_user.admin %>
               <li><a href="#">New Lego</a></li>
+            <% end %>
               <li><a href="http://localhost:3000/products?sort=price">Sort by Price: Low to High</a></li>
               <li><a href="http://localhost:3000/products?order=name&desc=true">Sort by Price: High to Low</a></li>
               <li role="separator" class="divider"></li>
@@ -71,6 +74,9 @@
                 <li><a href="/signup">Sign Up</a></li>
                 <li><a href="/login">Login</a></li>
               <% end %>
+
+              <li class="divider"></li>
+            <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart ( <%= @cart_count %>)</a></li>
 
               
             </ul>

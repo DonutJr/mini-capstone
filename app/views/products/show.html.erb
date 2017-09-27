@@ -17,9 +17,11 @@
         <h5>Category: <%= category.name %></h5>
   <% end %>
 
-
-
-<a href="/products/<%= @product.id %>" data-method="delete"> Delete Lego</a>
+  
+<!-- old way -->
+<% if current_user && current_user.admin %>
+  <a href="/products/<%= @product.id %>" data-method="delete"> Delete Lego</a>
+<% end %>
 
 <h4><%= @product.sale_message %></h4>
 
@@ -29,7 +31,7 @@
 
 <h2>Buy now</h2>
 
-<%= form_tag "/cart", method: :post do %>
+<%= form_tag "/carted_products", method: :post do %>
   <input type="hidden" value=" <%= @product.id %>"  name = "product_id" >
   
 
@@ -42,6 +44,7 @@
 
 <% end %>
 
-<%= link_to "delete", "/products/#{ @product.id }", method: :delete, class: "btn btn-danger" %>
-
+<% if current_user && current_user.admin %>
+  <%= link_to "delete", "/products/#{ @product.id }", method: :delete, class: "btn btn-danger" %>
+<% end %>
 <h6>Supplier: <%= @product.supplier.name %></h6>

@@ -8,8 +8,13 @@ class ProductsController < ApplicationController
   #   @products = Product.all
   #   render 'all_products_page.html.erb'
   # end
+  before_action :authenticate_admin!, except: [:index, :show]
+
 
   def index
+
+
+
     @products = Product.all
 
     sort_attribute = params[:sort]
@@ -49,6 +54,7 @@ class ProductsController < ApplicationController
 
   def new
     # @product = Product.new
+    @suppliers = Supplier.all
   end
 
   def create
@@ -69,10 +75,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
+
     @product = Product.find(params[:id])
   end
 
   def update
+
     product = Product.find(params[:id])
 
     product.assign_attributes(

@@ -1,11 +1,21 @@
 <h2>Order Successfully Purchased</h2>
 
+<h2>Bought by: <%= @order.user.name %></h2>
 
-<h3>User ID:<%= @order.user_id %> </h3>
-<h3>Quantity:<%= @order.quantity %> </h3>
-<h3>Product ID: <%= @order.product_id %></h3>
+
+<% @order.carted_products.each do |carted_product| %>
+
+  <h3>Quantity:<%= carted_product.quantity %> </h3>
+  <h3>Product : <%= carted_product.product.name %></h3>
+ 
+
+
+<% end %>
+
+
+<h3>Tax: <%= number_to_currency(@order.tax) %></h3>
+<h3>Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
 <h3>Total price: <%= number_to_currency(@order.total) %></h3>
 
 <h3>Your email: <%= current_user.email %></h3>
-<h3>Product name: <%=current_user.orders.last.product.name  %></h3>
 
