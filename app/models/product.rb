@@ -13,6 +13,13 @@ class Product < ApplicationRecord
   has_many :carted_products
   has_many :orders, through: :carted_products
 
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :price, presence: true
+  validates :price, numericality: true
+  validates :description, length: { in: 200..500 }
+  
+
 
   def sale_message
 

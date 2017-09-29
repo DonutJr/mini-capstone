@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :carted_products
   has_many :orders
 
+  validates :email, uniqueness: true
+
   def current_cart
     carted_products.where(status: "carted")
   end

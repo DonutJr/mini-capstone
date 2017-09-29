@@ -1,4 +1,18 @@
-<h1>Edit product</h1>
+<%= render "form", purpose: "Update", url: "/products/#{@product.id}", verb: :patch %>
+
+
+
+
+
+<!-- <h1>Edit product</h1>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+
+    <h2><%= error %></h2>
+
+  <% end %>
+<% end %>
 
 <%= form_tag "/products/#{@product.id}/", method: :patch do %>
   <div>
@@ -18,4 +32,4 @@
 
 
 
-<% end %>
+<% end %> -->

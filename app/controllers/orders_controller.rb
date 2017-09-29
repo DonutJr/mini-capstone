@@ -1,27 +1,28 @@
 class OrdersController < ApplicationController
+        before_action :authenticate_user!
 
-  def create
-    carted_products = current_user.current_cart
+    def create
+        carted_products = current_user.current_cart
 
-    order = Order.create(user_id: current_user.id,)
-    carted_products.update_all(status: "ordered", order_id: order.id)
-    order.calculate_totals
+        order = Order.create(user_id: current_user.id,)
+        carted_products.update_all(status: "ordered", order_id: order.id)
+        order.calculate_totals
 
 
-    # CartedProduct.all.each do |carted_product|
-    #   if carted_product.status == "carted"
-    #     order = Or
+        # CartedProduct.all.each do |carted_product|
+        #   if carted_product.status == "carted"
+        #     order = Or
 
-    # order = Order.new(
-    #               user_id: current_user.id,
-    #               quantity: params[:quantity],
-    #               product_id: params[:product_id],
-    #               )
+        # order = Order.new(
+        #               user_id: current_user.id,
+        #               quantity: params[:quantity],
+        #               product_id: params[:product_id],
+        #               )
 
-    # if order.save
-    #   flash[:success] = "Order Successfully Purchased"
-    #   # redirect_to '/orders/show'
-      redirect_to "/orders/#{order.id}"
+        # if order.save
+        #   flash[:success] = "Order Successfully Purchased"
+        #   # redirect_to '/orders/show'
+          redirect_to "/orders/#{order.id}"
     end
 
   

@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   #   @products = Product.all
   #   render 'all_products_page.html.erb'
   # end
-  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
 
   def index
@@ -55,18 +55,24 @@ class ProductsController < ApplicationController
   def new
     # @product = Product.new
     @suppliers = Supplier.all
+    @product = Product.new
   end
 
   def create
-    product = Product.new(
+    @product = Product.new(
                           name: params[:name],
                           price: params[:price],
                           image: params[:image],
                           description: params[:description]
                           )
-      product.save
-      flash[:success] = "Lego Successfully Created"
-      redirect_to "/products/#{product.id}"
+      if @product.save
+        flash[:success] = "Lego Successfully Created"
+        redirect_to "/products/#{@product.id}"
+      else
+        @suppliers = Supplier.all
+        @errors = @product.errors.full_messages
+        render "new.html.erb"
+      end
   end
 
   def show
@@ -81,23 +87,27 @@ class ProductsController < ApplicationController
 
   def update
 
-    product = Product.find(params[:id])
+    @product = Product.find(params[:id])
 
-    product.assign_attributes(
+    @product.assign_attributes(
                               name: params[:name],
                               price: params[:price],
                               image: params[:image],
                               description: params[:description]
                               )
 
-    product.name = params[:name]
-    product.price = params[:price]
-    product.image = params[:image]
-    product.description = params[:description]
+    @product.name = params[:name]
+    @product.price = params[:price]
+    @product.image = params[:image]
+    @product.description = params[:description]
 
-    product.save
-    flash[:success] = "Lego Successfully Updated"
-    redirect_to "/products/#{product.id}"
+    if @product.save
+      flash[:success] = "Lego Successfully Updated"
+      redirect_to "/products/#{product.id}"
+    else
+      @errors = @product.errors.full_messages
+    end
+
   end
 
   def destroy
